@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+
+        <record model="ir.actions.act_window" id="trans_id_03">
+            <field name="name">transaction</field>
+            <field name="res_model">transaction</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">Click here to create a New trans</p>
+            </field>
+        </record>
+
+        <record id="tree_trans_ref0" model="ir.ui.view">
+            <field name="name">transaction.tree</field>
+            <field name="model">transaction</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="transaction_id" />
+                    <field name="amount" widget='monetary' options="{'currency_field': 'currency_id'}" readonly="False" />
+                    <field name="currency_id"  invisible="1" />
+                    <field name="name_sender" />
+                    <field name="name_recever" />
+                    <field name="time_now" />
+                    <field name="fees" />
+                    <field name="Totalammo" />
+                </tree>
+            </field>
+        </record>
+
+        <record id="sequence_trans_ref0" model="ir.sequence">
+            <field name="name">transaction</field>
+            <field name="code">transaction</field>
+            <field name="prefix">Tr/</field>
+            <field name="padding">5</field>
+            <field name="number_next">10</field>
+            <field name="number_increment">1</field>
+        </record>
+
+
+        <record model="ir.ui.view" id="trans_id_05">
+            <field name="name">transaction</field>
+            <field name="model">transaction</field>
+            <field name="arch" type="xml">
+                <form string="trans">
+                    <sheet>
+                        <group>
+                            <h1 style="text-align:center;"> New Transaction </h1>
+                        </group>
+                        <group id="time_date" style='border: 5px solid #0000001a; border-radius: 15px;padding-left: 20px;padding-right: 0px;'>
+                            <group colspan="2" col="4">
+                                <field name="transaction_id"/>
+                                <field name="time_now"/>
+                            </group>
+                            <group colspan="2" col="6">
+                                <field name="name_sender" placeholder="Full Name Sender" />
+                                <field name="name_recever" placeholder="Full Name Recever" />
+                                <field name="amount" placeholder="Amount" />
+                            </group>
+                        </group>
+                        <group>
+                            <h1> Sender Of The Transfer </h1>
+                        </group>
+                        <group id="time_date" style='border-style: solid; border-width: 2px 2px 2px 2px; padding-left: 20px; padding-right: 20px'>
+                            <group colspan="2" col="4">
+                                <field name="attachment_docs" filename="file_name"/>
+                                <field name="file_name" invisible="1"/>
+                            </group>
+                        </group>
+                        <group>
+                            <field name="fees" />
+                            <field name="Totalammo" />
+
+                        </group>
+
+                    </sheet>
+
+                </form>
+
+            </field>
+
+        </record>
+
+        <menuitem id="trans_id_01" name="trans" web_icon="trans,static/description/icon.png"/>
+        <menuitem id="trans_id_02" name="trans" parent="trans_id_01" action="trans_id_03"/>
+
+            <!-- Print Report  item -->
+
+
+
+            <report id="transaction_id_9130"
+                    model="transaction" string="Print Transaction" report_type="qweb-html"
+                    name="transaction.report_mrporder01021"
+                    file="transaction.report_mrporder01021"
+                    attachment_use="True"
+                   />
+
+
+    </data>
+</odoo>

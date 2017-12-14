@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record model="ir.module.category" id="module_category_transaction">
+            <field name="name">transaction</field>
+            <field name="description"> your transaction.</field>
+            <field name="sequence">3</field>
+        </record>
+
+        <record id="group_transaction_1" model="res.groups">
+            <field name="name">User 1 Level</field>
+            <field name="category_id" ref="module_category_transaction"/>
+            <field name="users" eval="[(4, ref('base.user_root'))]"/>
+            <field name="comment">User 1 Level.</field>
+        </record>
+        
+        <record id="group_transaction_2" model="res.groups">
+            <field name="name">User 2 Level</field>
+            <field name="category_id" ref="module_category_transaction"/>
+            <field name="users" eval="[(4, ref('base.user_root'))]"/>
+             <field name="comment">User 2 Level .</field>
+        </record>
+
+        <record id="group_transaction_3" model="res.groups">
+            <field name="name">User 3 Level</field>
+            <field name="comment">User 3 Level.</field>
+            <field name="category_id" ref="module_category_transaction"/>
+            <field name="users" eval="[(4, ref('base.user_root'))]"/>
+        </record>
+    </data>
+</odoo>
